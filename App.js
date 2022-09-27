@@ -2,13 +2,19 @@ import React from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { StyleSheet, SafeAreaView, StatusBar, Text, View } from "react-native";
 
+import { Searchbar } from "react-native-paper";
+
 export default function App() {
   return (
     <>
       <SafeAreaView style={styles.safeView}>
         {/* SafeAreaView avoid the notch and status bar and navigation bar on Iphone*/}
         <View style={styles.searchContainer}>
-          <Text>our react native blank canvas</Text>
+          <Searchbar
+            placeholder="Search"
+            // onChangeText={onChangeSearch}
+            // value={searchQuery}
+          />
         </View>
         <View style={styles.listContainer}>
           <Text>our react native blank canvas</Text>
@@ -26,7 +32,6 @@ const styles = StyleSheet.create({
   },
   searchContainer: {
     padding: 16,
-    backgroundColor: "green",
   },
   listContainer: {
     flex: 1,
