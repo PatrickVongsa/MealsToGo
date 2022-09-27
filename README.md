@@ -5,3 +5,4 @@ Master project from my udemy course
 ## Branches
 
 1-app-layout : setup the app layout
+2-eslint-config : setup eslint and prettier
