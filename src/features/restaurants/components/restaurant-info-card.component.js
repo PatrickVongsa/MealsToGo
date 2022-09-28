@@ -45,6 +45,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
           </StyledRating>
           <SectionEnd>
             {isClosedTemporarily && (
+              // eslint-disable-next-line react-native/no-inline-styles
               <Text variant="caption" style={{ color: "red" }}>
                 CLOSED TEMPORARILY
               </Text>

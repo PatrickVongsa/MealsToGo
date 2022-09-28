@@ -1,33 +1,25 @@
 import React, { useContext } from "react";
 import styled from "styled-components/native";
-import { View, FlatList } from "react-native";
-import { Searchbar, ActivityIndicator, Colors } from "react-native-paper";
+import { FlatList } from "react-native";
+import { ActivityIndicator, Colors } from "react-native-paper";
+
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
-
 import { StyledSafeAreaView } from "../../../components/utility/safe-area.component";
-import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+import { Search } from "../components/search.component";
 
-const StyledSearchContainer = styled(View)`
-  padding: ${(props) => props.theme.space[3]};
-`;
+import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 
 const StyledRestaurantsList = styled(FlatList).attrs({
   contentContainerStyle: { padding: 16, paddingBottom: 88 },
 })``;
 
 export const RestaurantsScreen = () => {
-  const { isLoading, error, restaurants } = useContext(RestaurantsContext);
+  const { isLoading, restaurants } = useContext(RestaurantsContext);
 
   return (
     <StyledSafeAreaView>
       {/* SafeAreaView avoid the notch and status bar and navigation bar on Iphone*/}
-      <StyledSearchContainer>
-        <Searchbar
-          placeholder="Search"
-          // onChangeText={onChangeSearch}
-          // value={searchQuery}
-        />
-      </StyledSearchContainer>
+      <Search />
       {isLoading ? (
         <ActivityIndicator
           animating={true}
@@ -38,7 +30,6 @@ export const RestaurantsScreen = () => {
         <StyledRestaurantsList
           data={restaurants}
           renderItem={({ item }) => {
-            console.log(item);
             return <RestaurantInfoCard restaurant={item} />;
           }}
           keyExtractor={(item) => item.name}
