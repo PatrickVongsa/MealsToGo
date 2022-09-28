@@ -13,3 +13,5 @@ Master project from my udemy course
 - 7-navigation : add navigation on app
 - 8-context-config : add context to retrieve restaurant
 - 9-searchbar : hooking the searchbar
+- 10-navigation-opti : optimize the navigation
+- 11-detail-page : restaurant detail and menu
