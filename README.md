@@ -10,3 +10,4 @@ Master project from my udemy course
 - 4-list-restaurant : add a list of restaurants component and styled component
 - 5-theme-config : setup theme + fonts and finish card retaurant
 - 6-list-restaurants : add Flatlist to render Restaurant card
+- 7-navigation : add navigation on app
