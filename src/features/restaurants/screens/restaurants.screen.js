@@ -11,11 +11,11 @@ const StyledSafeAreaView = styled(SafeAreaView)`
 `;
 
 const StyledSearchContainer = styled(View)`
-  padding: 16px;
+  padding: ${(props) => props.theme.space[3]};
 `;
 const StyledListContainer = styled(View)`
   display: flex;
-  padding: 16px;
+  padding: ${(props) => props.theme.space[3]};
 `;
 
 export const RestaurantsScreen = () => (
