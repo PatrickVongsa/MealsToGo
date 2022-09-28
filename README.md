@@ -8,3 +8,4 @@ Master project from my udemy course
 - 2-eslint-config : setup eslint and prettier
 - 3-paper-searchbar : add searchbar from react-native-paper
 - 4-list-restaurant : add a list of restaurants component and styled component
+- 5-theme-config : setup theme + fonts and finish card retaurant
