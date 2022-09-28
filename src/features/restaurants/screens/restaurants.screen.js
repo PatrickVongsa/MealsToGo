@@ -1,46 +1,49 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components/native";
 import { View, FlatList } from "react-native";
-import { Searchbar } from "react-native-paper";
+import { Searchbar, ActivityIndicator, Colors } from "react-native-paper";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 
 import { StyledSafeAreaView } from "../../../components/utility/safe-area.component";
+import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 
 const StyledSearchContainer = styled(View)`
   padding: ${(props) => props.theme.space[3]};
 `;
 
 const StyledRestaurantsList = styled(FlatList).attrs({
-  contentContainerStyle: { padding: 16 },
+  contentContainerStyle: { padding: 16, paddingBottom: 88 },
 })``;
 
-export const RestaurantsScreen = () => (
-  <StyledSafeAreaView>
-    {/* SafeAreaView avoid the notch and status bar and navigation bar on Iphone*/}
-    <StyledSearchContainer>
-      <Searchbar
-        placeholder="Search"
-        // onChangeText={onChangeSearch}
-        // value={searchQuery}
-      />
-    </StyledSearchContainer>
-    <StyledRestaurantsList
-      data={[
-        { name: 1 },
-        { name: 2 },
-        { name: 3 },
-        { name: 4 },
-        { name: 5 },
-        { name: 6 },
-        { name: 7 },
-        { name: 8 },
-        { name: 9 },
-        { name: 10 },
-        { name: 11 },
-        { name: 12 },
-      ]}
-      renderItem={() => <RestaurantInfoCard />}
-      keyExtractor={(item) => item.name}
-    />
-  </StyledSafeAreaView>
-);
+export const RestaurantsScreen = () => {
+  const { isLoading, error, restaurants } = useContext(RestaurantsContext);
+
+  return (
+    <StyledSafeAreaView>
+      {/* SafeAreaView avoid the notch and status bar and navigation bar on Iphone*/}
+      <StyledSearchContainer>
+        <Searchbar
+          placeholder="Search"
+          // onChangeText={onChangeSearch}
+          // value={searchQuery}
+        />
+      </StyledSearchContainer>
+      {isLoading ? (
+        <ActivityIndicator
+          animating={true}
+          color={Colors.red400}
+          size="large"
+        />
+      ) : (
+        <StyledRestaurantsList
+          data={restaurants}
+          renderItem={({ item }) => {
+            console.log(item);
+            return <RestaurantInfoCard restaurant={item} />;
+          }}
+          keyExtractor={(item) => item.name}
+        />
+      )}
+    </StyledSafeAreaView>
+  );
+};
