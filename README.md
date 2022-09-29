@@ -16,3 +16,4 @@ Master project from my udemy course
 - 10-navigation-opti : optimize the navigation
 - 11-detail-page : restaurant detail and menu
 - 12-map-page : implement map page
+- 13-favourite : implement favourite feature
