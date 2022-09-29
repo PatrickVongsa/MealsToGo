@@ -15,3 +15,4 @@ Master project from my udemy course
 - 9-searchbar : hooking the searchbar
 - 10-navigation-opti : optimize the navigation
 - 11-detail-page : restaurant detail and menu
+- 12-map-page : implement map page
