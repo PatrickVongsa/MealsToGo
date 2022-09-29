@@ -22,9 +22,6 @@ export const RestaurantDetailScreen = ({ route }) => {
           left={(props) => <List.Icon {...props} icon="bread-slice" />}
           expanded={breakfastExpanded}
           onPress={() => {
-            setLunchExpanded(false);
-            setDinnerExpanded(false);
-            setDrinksExpanded(false);
             setBreakfastExpanded(!breakfastExpanded);
           }}
         >
@@ -37,9 +34,6 @@ export const RestaurantDetailScreen = ({ route }) => {
           left={(props) => <List.Icon {...props} icon="hamburger" />}
           expanded={lunchExpanded}
           onPress={() => {
-            setDinnerExpanded(false);
-            setDrinksExpanded(false);
-            setBreakfastExpanded(false);
             setLunchExpanded(!lunchExpanded);
           }}
         >
@@ -53,9 +47,6 @@ export const RestaurantDetailScreen = ({ route }) => {
           left={(props) => <List.Icon {...props} icon="food-variant" />}
           expanded={dinnerExpanded}
           onPress={() => {
-            setLunchExpanded(false);
-            setDrinksExpanded(false);
-            setBreakfastExpanded(false);
             setDinnerExpanded(!dinnerExpanded);
           }}
         >
@@ -69,9 +60,6 @@ export const RestaurantDetailScreen = ({ route }) => {
           left={(props) => <List.Icon {...props} icon="cup" />}
           expanded={drinksExpanded}
           onPress={() => {
-            setLunchExpanded(false);
-            setDinnerExpanded(false);
-            setBreakfastExpanded(false);
             setDrinksExpanded(!drinksExpanded);
           }}
         >
