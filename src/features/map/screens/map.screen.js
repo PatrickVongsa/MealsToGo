@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import MapView, { Marker, Callout } from "react-native-maps";
 import styled from "styled-components/native";
+import { ActivityIndicator, Colors } from "react-native-paper";
 
 import { Search } from "../components/search.component";
 
@@ -15,38 +16,46 @@ const Map = styled(MapView)`
 
 export const MapScreen = ({ navigation }) => {
   const { location } = useContext(LocationContext);
-  const { restaurants } = useContext(RestaurantsContext);
+  const { restaurants, isLoading } = useContext(RestaurantsContext);
 
-  const [latDelta, setLatDelta] = useState(0);
+  // const [latDelta, setLatDelta] = useState(0);
 
-  const { lat, lng, viewport } = location;
+  const { lat, lng } = location;
 
-  useEffect(() => {
-    const northeastLat = viewport.northeast.lat;
-    const southwestLat = viewport.southwest.lat;
+  // useEffect(() => {
+  //   const northeastLat = viewport.northeast.lat;
+  //   const southwestLat = viewport.southwest.lat;
 
-    setLatDelta(northeastLat - southwestLat);
-  }, [location, viewport]);
+  //   // setLatDelta(northeastLat - southwestLat);
+  // }, [location, viewport]);
 
   return (
     <>
       <Search />
+      {isLoading && (
+        <ActivityIndicator
+          animating={true}
+          color={Colors.blue400}
+          size="large"
+          style={{ position: "absolute", top: "50%", left: "45%", zIndex: 999 }}
+        />
+      )}
       <Map
         region={{
           latitude: lat,
           longitude: lng,
-          latitudeDelta: latDelta,
-          longitudeDelta: 0.02,
+          latitudeDelta: 0.09,
+          longitudeDelta: 0.09,
         }}
       >
-        {restaurants.map((restaurant) => {
+        {restaurants.map((restaurant, i) => {
           return (
             <Marker
-              key={restaurant.name}
+              key={987987 + i}
               title={restaurant.name}
               coordinate={{
-                latitude: restaurant.geometry.location.lat,
-                longitude: restaurant.geometry.location.lng,
+                latitude: restaurant.lat,
+                longitude: restaurant.lng,
               }}
             >
               <Callout

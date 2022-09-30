@@ -55,7 +55,7 @@ export const RestaurantsScreen = ({ navigation }) => {
               </TouchableOpacity>
             );
           }}
-          keyExtractor={(item) => item.name}
+          keyExtractor={(item) => item.address}
         />
       )}
     </StyledSafeAreaView>

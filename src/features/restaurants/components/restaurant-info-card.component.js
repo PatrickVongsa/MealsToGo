@@ -28,15 +28,18 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     address = "100 some random street",
     isOpenNow = true,
     rating = 4,
-    isClosedTemporarily = true,
+    // isClosedTemporarily = true,
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
   return (
-    <StyledCard elevation={5} key={name}>
+    <StyledCard elevation={5} key={name + rating + 123}>
       <Favourite restaurant={restaurant} />
-      <StyledCardCover key={name} source={{ uri: photos[0] }} />
+      <StyledCardCover
+        key={address + rating + 1321}
+        source={{ uri: photos[0] }}
+      />
       <StyledInfo>
         <Text variant="label">{name}</Text>
         <StyledContainer>
@@ -46,12 +49,12 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
             ))}
           </StyledRating>
           <SectionEnd>
-            {isClosedTemporarily && (
+            {/* {isClosedTemporarily && (
               // eslint-disable-next-line react-native/no-inline-styles
               <Text variant="caption" style={{ color: "red" }}>
                 CLOSED TEMPORARILY
               </Text>
-            )}
+            )} */}
             <Spacer position="left" size="large">
               {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
             </Spacer>

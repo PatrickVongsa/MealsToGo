@@ -15,22 +15,22 @@ export const LocationContextProvider = ({ children }) => {
     setKeyword(searchKeyword);
   };
 
-  useEffect(() => {
-    if (!keyword.length) {
-      //don't do anything
-      return;
-    }
-    locationRequest(keyword.toLowerCase().trim())
-      .then(locationTransform)
-      .then((result) => {
-        setIsLoading(false);
-        setLocation(result);
-      })
-      .catch((err) => {
-        setIsLoading(false);
-        setError(err);
-      });
-  }, [keyword]);
+  // useEffect(() => {
+  //   if (!keyword.length) {
+  //     //don't do anything
+  //     return;
+  //   }
+  //   locationRequest(keyword.toLowerCase().trim())
+  //     .then(locationTransform)
+  //     .then((result) => {
+  //       setIsLoading(false);
+  //       setLocation(result);
+  //     })
+  //     .catch((err) => {
+  //       setIsLoading(false);
+  //       setError(err);
+  //     });
+  // }, [keyword]);
 
   return (
     <LocationContext.Provider
@@ -40,6 +40,7 @@ export const LocationContextProvider = ({ children }) => {
         location,
         search: onSearch,
         keyword,
+        setLocation: (newLocation) => setLocation(newLocation),
       }}
     >
       {children}
