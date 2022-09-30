@@ -27,3 +27,20 @@ export const restaurantsTransform = ({ results = [] }) => {
 
   return camelize(mappedResults);
 };
+
+export const restaurantFoursqaureAPI = ({ results = [] }) => {
+  const mappedResultsAPI = results.map((restaurant) => {
+    return {
+      name: restaurant.name,
+      icon: "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+      address: restaurant.location.formatted_address,
+      isOpenNow: true,
+      rating: Math.floor(Math.random() * (5 - 3 + 1) + 3),
+      photos: [mockImages[Math.floor(Math.random() * mockImages.length)]],
+      lat: restaurant.geocodes.main.latitude,
+      lng: restaurant.geocodes.main.longitude,
+    };
+  });
+
+  return mappedResultsAPI;
+};
