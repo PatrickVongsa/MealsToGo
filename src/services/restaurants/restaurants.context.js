@@ -2,11 +2,7 @@ import React, { useState, createContext, useEffect, useContext } from "react";
 import { LocationContext } from "../location/location.context";
 import Constants from "expo-constants";
 
-import {
-  restaurantsRequest,
-  restaurantsTransform,
-  restaurantFoursqaureAPI,
-} from "./restaurants.service";
+import { restaurantFoursqaureAPI } from "./restaurants.service";
 
 export const RestaurantsContext = createContext();
 
@@ -15,23 +11,6 @@ export const RestaurantsContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const { keyword, setLocation } = useContext(LocationContext);
-
-  const retrieveRestaurants = (loc) => {
-    setIsLoading(true);
-    setRestaurants([]);
-    setTimeout(() => {
-      restaurantsRequest(loc)
-        .then(restaurantsTransform)
-        .then((results) => {
-          setIsLoading(false);
-          setRestaurants(results);
-        })
-        .catch((err) => {
-          setIsLoading(false);
-          setError(err);
-        });
-    }, 2000);
-  };
 
   const options = {
     method: "GET",
@@ -57,13 +36,10 @@ export const RestaurantsContextProvider = ({ children }) => {
             response.context.geo_bounds.circle.center.longitude;
 
           setIsLoading(false);
-          setLocation({ lat: latLocation, lng: lngLocation }); //transform response to location
-          setRestaurants(restaurantFoursqaureAPI(response)); //tranform response
+          setLocation({ lat: latLocation, lng: lngLocation });
+          setRestaurants(restaurantFoursqaureAPI(response));
         })
         .catch((err) => console.error(err));
-
-      // const locationString = `${location.lat},${location.lng}`;
-      // retrieveRestaurants(locationString);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keyword]);

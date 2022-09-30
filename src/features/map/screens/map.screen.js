@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import MapView, { Marker, Callout } from "react-native-maps";
 import styled from "styled-components/native";
 import { ActivityIndicator, Colors } from "react-native-paper";
@@ -18,16 +18,7 @@ export const MapScreen = ({ navigation }) => {
   const { location } = useContext(LocationContext);
   const { restaurants, isLoading } = useContext(RestaurantsContext);
 
-  // const [latDelta, setLatDelta] = useState(0);
-
   const { lat, lng } = location;
-
-  // useEffect(() => {
-  //   const northeastLat = viewport.northeast.lat;
-  //   const southwestLat = viewport.southwest.lat;
-
-  //   // setLatDelta(northeastLat - southwestLat);
-  // }, [location, viewport]);
 
   return (
     <>

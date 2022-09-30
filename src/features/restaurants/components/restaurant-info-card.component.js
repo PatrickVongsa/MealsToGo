@@ -28,7 +28,6 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     address = "100 some random street",
     isOpenNow = true,
     rating = 4,
-    // isClosedTemporarily = true,
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
@@ -49,12 +48,6 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
             ))}
           </StyledRating>
           <SectionEnd>
-            {/* {isClosedTemporarily && (
-              // eslint-disable-next-line react-native/no-inline-styles
-              <Text variant="caption" style={{ color: "red" }}>
-                CLOSED TEMPORARILY
-              </Text>
-            )} */}
             <Spacer position="left" size="large">
               {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
             </Spacer>

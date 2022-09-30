@@ -31,6 +31,7 @@ export const restaurantsTransform = ({ results = [] }) => {
 export const restaurantFoursqaureAPI = ({ results = [] }) => {
   const mappedResultsAPI = results.map((restaurant) => {
     return {
+      id: restaurant.fsq_id,
       name: restaurant.name,
       icon: "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
       address: restaurant.location.formatted_address,
