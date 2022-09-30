@@ -35,8 +35,8 @@ export const MapScreen = ({ navigation }) => {
         region={{
           latitude: lat,
           longitude: lng,
-          latitudeDelta: 0.09,
-          longitudeDelta: 0.09,
+          latitudeDelta: 0.1,
+          longitudeDelta: 0.1,
         }}
       >
         {restaurants.map((restaurant, i) => {

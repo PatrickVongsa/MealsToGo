@@ -36,7 +36,7 @@ export const RestaurantsScreen = ({ navigation }) => {
       {isLoading ? (
         <ActivityIndicator
           animating={true}
-          color={Colors.red400}
+          color={Colors.blue400}
           size="large"
         />
       ) : (
